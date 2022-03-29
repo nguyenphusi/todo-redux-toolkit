@@ -27,23 +27,31 @@ const TodoItem = ({todo}: TodoItemProps) => {
 	}
 
 	return (
-		<li style={{display: 'flex'}}>
+		<li style={{display: 'flex', justifyContent: 'space-between', paddingTop: '4px'}}>
 			{isEdit ? 
 				<>
-					<input value={value} onChange={(event) => setValue(event.target.value)} />
-					<button onClick={onEdit}>Save</button>
+					<div style={{display: 'flex', width: '200px'}}>
+						<input type='checkbox' checked={todo.isCompleted} onChange={onToggleComplete}/>
+						<input style={{ width: '200px'}} value={value} onChange={(event) => setValue(event.target.value)} />
+					</div>
+					<div style={{width: '150px', display: 'flex', justifyContent: 'flex-end'}}>
+						<button onClick={onEdit}>Save</button>
+						<button onClick={onDelete}>Delete</button>
+					</div>
 
 				</>
 				 : 
 				<>
-					<input type='checkbox' checked={todo.isCompleted} onChange={onToggleComplete}/>
-					<div style={{textDecoration: todo.isCompleted ? 'line-through' : 'none'}}>{todo.title}</div>
-					<button onClick={() => setIsEdit(true)}>Edit</button>
+					<div style={{display: 'flex', width: '200px'}}>
+						<input type='checkbox' checked={todo.isCompleted} onChange={onToggleComplete}/>
+						<div style={{textDecoration: todo.isCompleted ? 'line-through' : 'none'}}>{todo.title}</div>
+					</div>
+					<div style={{width: '150px', display: 'flex', justifyContent: 'flex-end'}}>
+						<button onClick={() => setIsEdit(true)}>Edit</button>
+						<button onClick={onDelete}>Delete</button>
+					</div>
 				</>
 			}
-			
-			
-			<button onClick={onDelete}>Delete</button>
 		</li>
 	);
 }

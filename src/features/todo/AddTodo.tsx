@@ -19,11 +19,13 @@ const AddTodo = () => {
 
 	return (
 		<>
-			<div style={{display: 'flex'}}>
-				<input value={value}
+			<div style={{display: 'flex', justifyContent: 'space-between'}}>
+				<input value={value} style={{width: '200px'}}
 					onChange={(event) => setValue(event.target.value)}
 				></input>
-				<button onClick={onAdd}>Add</button>
+				<div style={{width: '150px', display: 'flex', justifyContent: 'flex-end'}}>
+					<button onClick={onAdd}>Add</button>
+				</div>
 			</div>
 
 		</>
